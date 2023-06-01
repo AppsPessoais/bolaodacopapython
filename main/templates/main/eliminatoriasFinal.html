@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Final{% endblock %}
+
+{% block content %}
+
+<style>
+    .data-jogos {
+        font-size: .9rem;
+        font-weight: 500;
+        margin-top: 24px;
+        margin-bottom: 20px;
+    }
+
+    hr {
+        margin-top: 24px;
+    }
+
+
+    input {
+        width: 55px;
+        text-align: center;
+        border: 2px solid #84CAD5;
+    }
+
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+    }
+
+    @media (max-width: 475px) {
+        input {
+            width: 40px;
+        }
+    }
+
+    @media (max-width: 386px) {
+        input {
+            width: 32px;
+        }
+    }
+</style>
+
+<div class="row">
+    <div class="col mt-4">
+        <div class="text-center">
+            <h3>Disputa 3º Lugar</h3>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="text-center">
+            <form action="{% url 'main:salvareliminatoriasfinal' %}" method="POST">
+                {% csrf_token %}
+
+                <h5>Jogo 63</h5>
+
+                <p class="lead data-jogos">SAB, 17/12/2022 às 12:00</p>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <span id="selecao1TerceiroLugar" class="nome-selecoes">{{ selecao1TerceiroLugar }}</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="number" min="0" max="10" id="res29" name="res29" value="{{ info.res29 }}" required>
+                        X
+                        <input type="number" min="0" max="10" id="res30" name="res30" value="{{ info.res30 }}" required>
+                    </div>
+                    <div class="col-4 text-left">
+                        <span id="selecao2TerceiroLugar" class="nome-selecoes">{{ selecao2TerceiroLugar }}</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="col mt-2 mb-4">
+                        <div class="text-center">
+                            <h3>FINAL</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <h5>Jogo 64</h5>
+
+                <p class="lead data-jogos">DOM, 18/12/2022 às 12:00</p>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <span id="selecao1Final" class="nome-selecoes">{{ selecao1Final }}</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="number" min="0" max="10" id="res31" name="res31" value="{{ info.res31 }}" required>
+                        X
+                        <input type="number" min="0" max="10" id="res32" name="res32" value="{{ info.res32 }}" required>
+                    </div>
+                    <div class="col-4 text-left">
+                        <span id="selecao2Final" class="nome-selecoes">{{ selecao2Final }}</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-info btn-lg mr-2">
+                        <span class="">Salvar</span>
+                    </button>
+                    <a href="{% url 'main:pagemain' %}">
+                        <button type="button" class="btn btn-info btn-lg">
+                            <span class="">Voltar</span>
+                        </button>
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    let selecao1TerceiroLugar = document.getElementById('selecao1TerceiroLugar').innerText
+    let selecao2TerceiroLugar = document.getElementById('selecao2TerceiroLugar').innerText
+    let selecao1Final = document.getElementById('selecao1Final').innerText
+    let selecao2Final = document.getElementById('selecao2Final').innerText
+
+    if (selecao1TerceiroLugar.length == 16 || selecao2TerceiroLugar.length == 16) {
+        var input1 = document.querySelector('#res29')
+        var input2 = document.querySelector('#res30')
+        input1.disabled = true
+        input2.disabled = true
+    }
+    if (selecao1Final.length == 16 || selecao2Final.length == 16) {
+        var input1 = document.querySelector('#res31')
+        var input2 = document.querySelector('#res32')
+        input1.disabled = true
+        input2.disabled = true
+    }
+
+</script>
+
+{% endblock %}

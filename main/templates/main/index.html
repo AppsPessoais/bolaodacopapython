@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Home{% endblock %}
+
+{% block content %}
+
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+<style>
+    .secao-dias-para-copa {
+        text-align: center;
+        background-color: #fff;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .titulo-dias-para-copa {
+        font-size: 1.7em;
+        font-weight: bold;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .card {
+        background-color: #F1F1F1;
+        border: 1.5px solid #000000;
+    }
+
+    .card-title {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .lead {
+        font-weight: bold;
+        line-height: 1.2;
+    }
+
+    .lead-dias-para-copa {
+        font-size: 1.4rem;
+    }
+
+    .secao-entrar {
+        background-color: #fff;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .secao-tabela-usuarios {
+        background-color: #fff;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+    @media (max-width: 1000px) {
+        .secao-tabela-usuarios {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+    }
+
+    @media (max-width: 750px) {
+        .secao-tabela-usuarios {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .secao-tabela-usuarios {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+
+    @media (max-width: 450px) {
+        .card {
+            width: 80px;
+        }
+    }
+</style>
+
+<div class="secao-dias-para-copa mt-4">
+    <div class="row align-items-center justify-content-center">
+
+        <div class="col-12">
+            <div class="titulo-dias-para-copa mb-4">
+                A COPA DO MUNDO COMEÇA EM:
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="card">
+                <div class="card-block">
+                    <div class="card-title">
+                        <p class="lead lead-dias-para-copa" id="dias">{{ dia }}</p>
+                        <p style="margin-top: -17px;">dias</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="card">
+                <div class="card-block">
+                    <div class="card-title">
+                        <p class="lead lead-dias-para-copa" id="horas">{{ hora }}</p>
+                        <p style="margin-top: -17px;">horas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="card">
+                <div class="card-block">
+                    <div class="card-title">
+                        <p class="lead lead-dias-para-copa" id="minutos">{{ minuto }}</p>
+                        <p style="margin-top: -17px;">minutos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end row -->
+</div> <!-- end secao-dias-para-copa -->
+
+
+<div class="secao-entrar mt-4 mb-4">
+    <div class="row">
+
+        <div class="text-center col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <h3>Palpites Copa Do Mundo</h3>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"></div>
+
+        <div class="text-center col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-5" style="padding-left: 30px;">
+            <p class="lead">1) Faça seu cadastro.</p>
+            <p class="lead">2) Já tem cadastro? Faça seu login.</p>
+            <p class="lead">3) Salve seus palpites.</p>
+
+            <div class="botao-entrar text-center mr-2 mb-4 mt-5">
+                {% if request.user.is_authenticated %}
+                <a class="nav-link" href="{% url 'main:pagemain' %}">
+                    <button class="btn btn-warning btn-sm"
+                        style="width: 170px; height: 45px; font-size: 17px;"><strong>Entrar</strong></button>
+                </a>
+                {% else %}
+                <a class="nav-link" href="{% url 'perfil:login' %}">
+                    <button class="btn btn-warning btn-sm"
+                        style="width: 170px; height: 45px; font-size: 17px;"><strong>Entrar</strong></button>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center mx-auto" style="width: 100%">
+            <img class="img-responsive img-fluid" src="https://i.postimg.cc/Sj0VDJwR/copa-do-mundoedit.jpg" alt="">
+
+        </div>
+
+    </div> <!-- end row -->
+</div> <!-- end secao-entrar -->
+
+<div class="secao-tabela-usuarios mt-4 mb-4">
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="text-center">
+                <h3>Tabela Pontuação Usuários</h3>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+
+        <thead>
+            <tr>
+                <th scope="col">Usuário</th>
+                <th scope="col">Pontos</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.usuario }}</td>
+                <td>{{ usuario.pontos }}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table> <!-- end table -->
+</div> <!-- end secao-entrar -->
+
+{% endblock %}

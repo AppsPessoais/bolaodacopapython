@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block titulo %}Registro{% endblock %}
+
+{% block content %}
+
+<div class="card mt-4 mb-4">
+    <div class="card-body">
+
+        <h3 class="text-center">
+            Login
+        </h3>
+
+        <form action="" method="POST">
+
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <input type="submit" value="Registrar" class="btn btn-danger">
+
+        </form>
+
+    </div> <!-- end card-body -->
+</div> <!-- end card -->
+
+{% endblock %}

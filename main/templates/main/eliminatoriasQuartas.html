@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Quartas{% endblock %}
+
+{% block content %}
+
+<style>
+    .data-jogos {
+        font-size: .9rem;
+        font-weight: 500;
+        margin-top: 24px;
+        margin-bottom: 20px;
+    }
+
+    hr {
+        margin-top: 24px;
+    }
+
+
+    input {
+        width: 55px;
+        text-align: center;
+        border: 2px solid #84CAD5;
+    }
+
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+    }
+
+    @media (max-width: 475px) {
+        input {
+            width: 40px;
+        }
+    }
+
+    @media (max-width: 386px) {
+        input {
+            width: 32px;
+        }
+    }
+</style>
+
+<div class="row">
+    <div class="col mt-4">
+        <div class="text-center">
+            <h3>Quartas de Final</h3>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="text-center">
+            <form action="{% url 'main:salvareliminatoriasquartas' %}" method="POST">
+                {% csrf_token %}
+
+                <h5>Jogo 57</h5>
+
+                <p class="lead data-jogos">SEX, 09/12/2022 às 16:00</p>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <span id="selecao1quartas" class="nome-selecoes">{{ selecao1quartas }}</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="number" min="0" max="10" id="res17" name="res17" value="{{ info.res17 }}" required>
+                        X
+                        <input type="number" min="0" max="10" id="res18" name="res18" value="{{ info.res18 }}" required>
+                    </div>
+                    <div class="col-4 text-left">
+                        <span id="selecao2quartas" class="nome-selecoes">{{ selecao2quartas }}</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <h5>Jogo 58</h5>
+
+                <p class="lead data-jogos">SEX, 09/12/2022 às 12:00</p>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <span id="selecao3quartas" class="nome-selecoes">{{ selecao3quartas }}</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="number" min="0" max="10" id="res19" name="res19" value="{{ info.res19 }}" required>
+                        X
+                        <input type="number" min="0" max="10" id="res20" name="res20" value="{{ info.res20 }}" required>
+                    </div>
+                    <div class="col-4 text-left">
+                        <span id="selecao4quartas" class="nome-selecoes">{{ selecao4quartas }}</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <h5>Jogo 59</h5>
+
+                <p class="lead data-jogos">SAB, 10/12/2022 às 16:00</p>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <span id="selecao5quartas" class="nome-selecoes">{{ selecao5quartas }}</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="number" min="0" max="10" id="res21" name="res21" value="{{ info.res21 }}" required>
+                        X
+                        <input type="number" min="0" max="10" id="res22" name="res22" value="{{ info.res22 }}" required>
+                    </div>
+                    <div class="col-4 text-left">
+                        <span id="selecao6quartas" class="nome-selecoes">{{ selecao6quartas }}</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <h5>Jogo 60</h5>
+
+                <p class="lead data-jogos">SAB, 10/12/2022 às 10:00</p>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <span id="selecao7quartas" class="nome-selecoes">{{ selecao7quartas }}</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="number" min="0" max="10" id="res23" name="res23" value="{{ info.res23 }}" required>
+                        X
+                        <input type="number" min="0" max="10" id="res24" name="res24" value="{{ info.res24 }}" required>
+                    </div>
+                    <div class="col-4 text-left">
+                        <span id="selecao8quartas" class="nome-selecoes">{{ selecao8quartas }}</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-info btn-lg mr-2">
+                        <span class="">Salvar</span>
+                    </button>
+                    <a href="{% url 'main:pagemain' %}">
+                        <button type="button" class="btn btn-info btn-lg">
+                            <span class="">Voltar</span>
+                        </button>
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    let selecao1quartas = document.getElementById('selecao1quartas').innerText
+    let selecao2quartas = document.getElementById('selecao2quartas').innerText
+    let selecao3quartas = document.getElementById('selecao3quartas').innerText
+    let selecao4quartas = document.getElementById('selecao4quartas').innerText
+    let selecao5quartas = document.getElementById('selecao5quartas').innerText
+    let selecao6quartas = document.getElementById('selecao6quartas').innerText
+    let selecao7quartas = document.getElementById('selecao7quartas').innerText
+    let selecao8quartas = document.getElementById('selecao8quartas').innerText
+
+    if (selecao1quartas.length == 16 || selecao2quartas.length == 16) {
+        var input1 = document.querySelector('#res17')
+        var input2 = document.querySelector('#res18')
+        input1.disabled = true
+        input2.disabled = true
+    }
+    if (selecao3quartas.length == 16 || selecao4quartas.length == 16) {
+        var input1 = document.querySelector('#res19')
+        var input2 = document.querySelector('#res20')
+        input1.disabled = true
+        input2.disabled = true
+    }
+    if (selecao5quartas.length == 16 || selecao6quartas.length == 16) {
+        var input1 = document.querySelector('#res21')
+        var input2 = document.querySelector('#res22')
+        input1.disabled = true
+        input2.disabled = true
+    }
+    if (selecao7quartas.length == 16 || selecao8quartas.length == 16) {
+        var input1 = document.querySelector('#res23')
+        var input2 = document.querySelector('#res24')
+        input1.disabled = true
+        input2.disabled = true
+    }
+</script>
+
+{% endblock %}

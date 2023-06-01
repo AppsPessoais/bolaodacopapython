@@ -1,0 +1,290 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Oitavas{% endblock %}
+
+{% block content %}
+
+<style>
+    .data-jogos {
+        font-size: .9rem;
+        font-weight: 500;
+        margin-top: 24px;
+        margin-bottom: 20px;
+    }
+
+    hr {
+        margin-top: 24px;
+    }
+
+    input {
+        width: 55px;
+        text-align: center;
+        border: 2px solid #84CAD5;
+    }
+
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+    }
+
+    @media (max-width: 475px) {
+        input {
+            width: 40px;
+        }
+    }
+
+    @media (max-width: 386px) {
+        input {
+            width: 32px;
+        }
+    }
+</style>
+
+<div class="row">
+    <div class="col mt-4">
+        <div class="text-center">
+            <h3>Oitavas de Final</h3>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="text-center">
+            <form action="{% url 'main:salvareliminatoriasoitavas' %}" method="POST">
+                {% csrf_token %}
+
+                <h5>Jogo 49</h5>
+
+                <p class="lead data-jogos">SAB, 03/12/2022 às 12:00</p>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <span id="primeiroColocadoA" class="nome-selecoes">{{ primeiroColocadoA }}</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="number" min="0" max="10" id="res1" name="res1" value="{{ info.res1 }}" required> X
+                        <input type="number" min="0" max="10" id="res2" name="res2" value="{{ info.res2 }}" required>
+                    </div>
+                    <div class="col-4 text-left">
+                        <span id="segundoColocadoB" class="nome-selecoes">{{ segundoColocadoB }}</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <h5>Jogo 50</h5>
+
+                <p class="lead data-jogos">SAB, 03/12/2022 às 16:00</p>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <span id="primeiroColocadoC" class="nome-selecoes">{{ primeiroColocadoC }}</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="number" min="0" max="10" id="res3" name="res3" value="{{ info.res3 }}" required> X
+                        <input type="number" min="0" max="10" id="res4" name="res4" value="{{ info.res4 }}" required>
+                    </div>
+                    <div class="col-4 text-left">
+                        <span id="segundoColocadoD" class="nome-selecoes">{{ segundoColocadoD }}</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <h5>Jogo 51</h5>
+
+                <p class="lead data-jogos">DOM, 04/12/2022 às 16:00</p>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <span id="primeiroColocadoB" class="nome-selecoes">{{ primeiroColocadoB }}</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="number" min="0" max="10" id="res5" name="res5" value="{{ info.res5 }}" required> X
+                        <input type="number" min="0" max="10" id="res6" name="res6" value="{{ info.res6 }}" required>
+                    </div>
+                    <div class="col-4 text-left">
+                        <span id="segundoColocadoA" class="nome-selecoes">{{ segundoColocadoA }}</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <h5>Jogo 52</h5>
+
+                <p class="lead data-jogos">DOM, 04/12/2022 às 12:00</p>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <span id="primeiroColocadoD" class="nome-selecoes">{{ primeiroColocadoD }}</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="number" min="0" max="10" id="res7" name="res7" value="{{ info.res7 }}" required> X
+                        <input type="number" min="0" max="10" id="res8" name="res8" value="{{ info.res8 }}" required>
+                    </div>
+                    <div class="col-4 text-left">
+                        <span id="segundoColocadoC" class="nome-selecoes">{{ segundoColocadoC }}</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <h5>Jogo 53</h5>
+
+                <p class="lead data-jogos">SEG, 05/12/2022 às 12:00</p>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <span id="primeiroColocadoE" class="nome-selecoes">{{ primeiroColocadoE }}</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="number" min="0" max="10" id="res9" name="res9" value="{{ info.res9 }}" required> X
+                        <input type="number" min="0" max="10" id="res10" name="res10" value="{{ info.res10 }}" required>
+                    </div>
+                    <div class="col-4 text-left">
+                        <span id="segundoColocadoF" class="nome-selecoes">{{ segundoColocadoF }}</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <h5>Jogo 54</h5>
+
+                <p class="lead data-jogos">SEG, 05/12/2022 às 16:00</p>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <span id="primeiroColocadoG" class="nome-selecoes">{{ primeiroColocadoG }}</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="number" min="0" max="10" id="res11" name="res11" value="{{ info.res11 }}" required>
+                        X
+                        <input type="number" min="0" max="10" id="res12" name="res12" value="{{ info.res12 }}" required>
+                    </div>
+                    <div class="col-4 text-left">
+                        <span id="segundoColocadoH" class="nome-selecoes">{{ segundoColocadoH }}</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <h5>Jogo 55</h5>
+
+                <p class="lead data-jogos">TER, 06/12/2022 às 12:00</p>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <span id="primeiroColocadoF" class="nome-selecoes">{{ primeiroColocadoF }}</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="number" min="0" max="10" id="res13" name="res13" value="{{ info.res13 }}" required>
+                        X
+                        <input type="number" min="0" max="10" id="res14" name="res14" value="{{ info.res14 }}" required>
+                    </div>
+                    <div class="col-4 text-left">
+                        <span id="segundoColocadoE" class="nome-selecoes">{{ segundoColocadoE }}</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <h5>Jogo 56</h5>
+
+                <p class="lead data-jogos">TER, 06/12/2022 às 16:00</p>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <span id="primeiroColocadoH" class="nome-selecoes">{{ primeiroColocadoH }}</span>
+                    </div>
+                    <div class="col-4">
+                        <input type="number" min="0" max="10" id="res15" name="res15" value="{{ info.res15 }}" required>
+                        X
+                        <input type="number" min="0" max="10" id="res16" name="res16" value="{{ info.res16 }}" required>
+                    </div>
+                    <div class="col-4 text-left">
+                        <span id="segundoColocadoG" class="nome-selecoes">{{ segundoColocadoG }}</span>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-info btn-lg mr-2">
+                        <span class="">Salvar</span>
+                    </button>
+                    <a href="{% url 'main:pagemain' %}">
+                        <button type="button" class="btn btn-info btn-lg">
+                            <span class="">Voltar</span>
+                        </button>
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    let primeiroColocadoA = document.getElementById('primeiroColocadoA').innerText
+    let segundoColocadoB = document.getElementById('segundoColocadoB').innerText
+    let primeiroColocadoC = document.getElementById('primeiroColocadoC').innerText
+    let segundoColocadoD = document.getElementById('segundoColocadoD').innerText
+    let primeiroColocadoB = document.getElementById('primeiroColocadoB').innerText
+    let segundoColocadoA = document.getElementById('segundoColocadoA').innerText
+    let primeiroColocadoD = document.getElementById('primeiroColocadoD').innerText
+    let segundoColocadoC = document.getElementById('segundoColocadoC').innerText
+    let primeiroColocadoE = document.getElementById('primeiroColocadoE').innerText
+    let segundoColocadoF = document.getElementById('segundoColocadoF').innerText
+    let primeiroColocadoG = document.getElementById('primeiroColocadoG').innerText
+    let segundoColocadoH = document.getElementById('segundoColocadoH').innerText
+    let primeiroColocadoF = document.getElementById('primeiroColocadoF').innerText
+    let segundoColocadoE = document.getElementById('segundoColocadoE').innerText
+    let primeiroColocadoH = document.getElementById('primeiroColocadoH').innerText
+    let segundoColocadoG = document.getElementById('segundoColocadoG').innerText
+
+    if (primeiroColocadoA.length == 16 || segundoColocadoB.length == 16) {
+        var input1 = document.querySelector('#res1')
+        var input2 = document.querySelector('#res2')
+        input1.disabled = true
+        input2.disabled = true
+    }
+    if (primeiroColocadoC.length == 16 || segundoColocadoD.length == 16) {
+        var input1 = document.querySelector('#res3')
+        var input2 = document.querySelector('#res4')
+        input1.disabled = true
+        input2.disabled = true
+    }
+    if (primeiroColocadoB.length == 16 || segundoColocadoA.length == 16) {
+        var input1 = document.querySelector('#res5')
+        var input2 = document.querySelector('#res6')
+        input1.disabled = true
+        input2.disabled = true
+    }
+    if (primeiroColocadoD.length == 16 || segundoColocadoC.length == 16) {
+        var input1 = document.querySelector('#res7')
+        var input2 = document.querySelector('#res8')
+        input1.disabled = true
+        input2.disabled = true
+    }
+    if (primeiroColocadoE.length == 16 || segundoColocadoF.length == 16) {
+        var input1 = document.querySelector('#res9')
+        var input2 = document.querySelector('#res10')
+        input1.disabled = true
+        input2.disabled = true
+    }
+    if (primeiroColocadoG.length == 16 || segundoColocadoH.length == 16) {
+        var input1 = document.querySelector('#res11')
+        var input2 = document.querySelector('#res12')
+        input1.disabled = true
+        input2.disabled = true
+    }
+    if (primeiroColocadoF.length == 16 || segundoColocadoE.length == 16) {
+        var input1 = document.querySelector('#res13')
+        var input2 = document.querySelector('#res14')
+        input1.disabled = true
+        input2.disabled = true
+    }
+    if (primeiroColocadoH.length == 16 || segundoColocadoG.length == 16) {
+        var input1 = document.querySelector('#res15')
+        var input2 = document.querySelector('#res16')
+        input1.disabled = true
+        input2.disabled = true
+    }
+</script>
+
+{% endblock %}
